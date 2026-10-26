@@ -34,6 +34,8 @@ After that, every day:
 /daily          replies, follow-ups, new postings, applications, report
 /find           just find and score fresh postings
 /apply <url>    apply to one posting end to end
+/prep           get ready for a call or interview (brief, questions, mock run)
+/strategist     weekly: read the funnel, find the bottleneck, decide what to change
 ```
 
 **Clone, don't fork.** Your CV, profile, tracker and answers are in `.gitignore` and never leave your machine.
@@ -50,7 +52,7 @@ and the Gmail connector so it can read replies. Without them it prepares everyth
 | adapts your CV and letter from **your real facts only** | invent skills, years or results |
 | fills forms, shows you a summary before Submit | submit without your "ok" (unless you turn it on) |
 | drafts replies to recruiters | send anything about pay, visa or terms without your "send" |
-| keeps a CSV tracker, a status page and a daily journal | create accounts, type passwords, solve CAPTCHAs, take tests for you |
+| keeps a CSV tracker, a status page and a daily journal; a strategist reviews the funnel weekly | create accounts, type passwords, solve CAPTCHAs, take tests for you |
 | checks Hirelog before each application and shares what it learned | share anything about you |
 
 ## Files
@@ -105,5 +107,8 @@ claude
 резюме и ответы в анкетах он пишет на языке вакансии.
 
 Дальше каждый день — `/daily`. Найти вакансии — `/find`. Откликнуться на одну — `/apply <ссылка>`.
+Подготовиться к звонку — `/prep`. Раз в неделю — `/strategist`: карьерный стратег смотрит воронку, находит узкое
+место (не видят / не отвечают / срезают на интервью), решает, где менять сегмент, CV, каналы или личный бренд,
+и готовит позицию на переговоры.
 
 **Клонируйте, а не форкайте.** Резюме, профиль, трекер и ответы в `.gitignore` и остаются только у вас.

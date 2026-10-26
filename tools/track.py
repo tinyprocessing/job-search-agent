@@ -4,7 +4,7 @@
   python3 tools/track.py add --company Acme --role "Backend Engineer" --link URL [--fit 4] [--status Found] [--notes ...]
   python3 tools/track.py update ID [--status Applied] [--next "check reply 2026-11-03"] [--notes ...]
   python3 tools/track.py list [--status Applied] [--due]
-  python3 tools/track.py stats
+  python3 tools/track.py stats [--by source|location|fit|company|role] [--days 7]
 """
 import argparse
 import csv
@@ -93,13 +93,29 @@ def cmd_list(a):
         print("nothing here")
 
 
-def cmd_stats(_):
+SENT = ("Applied", "Screen", "Interview", "Offer", "Rejected", "Withdrawn", "Ghosted")
+TALKS = ("Screen", "Interview", "Offer")
+
+
+def cmd_stats(a):
     rows = load()
+    if a.days:
+        since = (dt.date.today() - dt.timedelta(days=a.days)).isoformat()
+        rows = [r for r in rows if r["date"] >= since]
     by = {s: sum(r["status"] == s for r in rows) for s in STATUSES}
-    sent = sum(by[s] for s in ("Applied", "Screen", "Interview", "Offer", "Rejected", "Withdrawn", "Ghosted"))
-    talks = by["Screen"] + by["Interview"] + by["Offer"]
+    sent = sum(by[s] for s in SENT)
+    talks = sum(by[s] for s in TALKS)
     print(f"tracked {len(rows)} · applied {sent} · conversations {talks} · offers {by['Offer']} · rejected {by['Rejected']}")
     print(" · ".join(f"{s} {n}" for s, n in by.items() if n))
+    if a.by:
+        groups = {}
+        for r in rows:
+            groups.setdefault(r.get(a.by) or "—", []).append(r)
+        print(f"\nby {a.by}: applied → conversations (rejected)")
+        for g, rs in sorted(groups.items(), key=lambda kv: -sum(r["status"] in SENT for r in kv[1])):
+            s = sum(r["status"] in SENT for r in rs)
+            if s:
+                print(f"  {g[:40]:<40} {s:>4} → {sum(r['status'] in TALKS for r in rs):>3}  ({sum(r['status'] == 'Rejected' for r in rs)})")
 
 
 def main():
@@ -122,7 +138,9 @@ def main():
     ls = sp.add_parser("list")
     ls.add_argument("--status")
     ls.add_argument("--due", action="store_true")
-    sp.add_parser("stats")
+    st = sp.add_parser("stats")
+    st.add_argument("--by", choices=["source", "location", "fit", "company", "role"])
+    st.add_argument("--days", type=int)
     a = p.parse_args()
     {"add": cmd_add, "update": cmd_update, "list": cmd_list, "stats": cmd_stats}[a.cmd](a)
 

@@ -75,6 +75,10 @@ agents share those facts. Reading is open; this repo connects it through `.mcp.j
 - Human pace: no mass applying, no scripts hammering job boards. Quality over volume.
 - The user's own rules live in `profile.md` → Rules and override defaults here.
 
+## Strategy and calls
+- Once a week (or when replies dry up, or before an offer) run the `strategist` skill; decisions go to `strategy.md`.
+- Every booked call → `prep` skill the day before; debrief right after.
+
 ## Browser
 If Claude in Chrome is connected, work in the user's browser, one tab at a time. Before filling a form, decline
 non-essential cookies first (some sites reload the page on that click and clear the form).

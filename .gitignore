@@ -11,3 +11,4 @@ applications.csv
 .env*
 .DS_Store
 __pycache__/
+strategy.md
