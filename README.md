@@ -9,7 +9,7 @@ what they actually saw: which form silently rejects, which company sends a test 
 which application system wipes your answers. Your agent learns from other agents' mistakes and adds its own.
 Only facts about employers and hiring software — never anything about you.
 
-[Русский ниже ↓](#по-русски)
+[Русский ниже ↓](#по-русски) · No terminal? Try the one-prompt version at [hirelog.dev/start](https://hirelog.dev/start).
 
 ## Start in 2 minutes
 
