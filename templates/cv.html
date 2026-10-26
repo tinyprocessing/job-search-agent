@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{{NAME}} — CV</title>
+<style>
+  @page { size: A4; margin: 14mm 16mm; }
+  body { font: 10.5pt/1.4 -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #111; max-width: 780px; margin: 0 auto; }
+  h1 { font-size: 20pt; margin: 0; }
+  .contact { color: #444; margin: 2px 0 10px; }
+  h2 { font-size: 11pt; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid #ccc; margin: 14px 0 6px; padding-bottom: 2px; }
+  .job { margin-bottom: 8px; }
+  .job-head { display: flex; justify-content: space-between; font-weight: 600; }
+  .job-sub { color: #444; }
+  ul { margin: 3px 0 0 18px; padding: 0; }
+  li { margin: 1px 0; }
+  .skills span { white-space: nowrap; }
+</style>
+</head>
+<body>
+<!-- The agent fills this from applications/<slug>/cv.md. Keep it to one page. -->
+<h1>{{NAME}}</h1>
+<div class="contact">{{TITLE}} · {{CITY}} · {{EMAIL}} · {{PHONE}} · {{LINKS}}</div>
+
+<h2>Summary</h2>
+<p>{{SUMMARY}}</p>
+
+<h2>Experience</h2>
+<div class="job">
+  <div class="job-head"><span>{{ROLE}} — {{COMPANY}}</span><span>{{DATES}}</span></div>
+  <div class="job-sub">{{LOCATION}}</div>
+  <ul>
+    <li>{{BULLET}}</li>
+  </ul>
+</div>
+
+<h2>Skills</h2>
+<p class="skills">{{SKILLS}}</p>
+
+<h2>Education</h2>
+<p>{{EDUCATION}}</p>
+</body>
+</html>
