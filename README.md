@@ -41,6 +41,15 @@ After that, every day:
 **Clone, don't fork.** Your CV, profile, tracker and answers are in `.gitignore` and never leave your machine.
 Keep your copy private.
 
+### Cursor or Codex instead of Claude Code
+
+Works too. Open the folder in **Cursor** — `AGENTS.md`, `.cursor/mcp.json` (Hirelog) and `.cursor/commands/`
+(`/setup`, `/daily`, `/find`, `/apply`, `/prep`, `/strategist`) are already there; enable the `hirelog` MCP
+server in Cursor settings when asked. **Codex** reads `AGENTS.md`; add Hirelog to `~/.codex/config.toml`:
+`[mcp_servers.hirelog]` + `url = "https://hirelog.dev/mcp"` ([details](https://hirelog.dev/docs)).
+Type `/setup` or just say "run setup". Form filling in the browser is easiest with Claude in Chrome;
+without it the agent prepares every answer and you paste.
+
 Optional: connect [Claude in Chrome](https://claude.com/chrome) so the agent can fill forms in your browser,
 and the Gmail connector so it can read replies. Without them it prepares everything and you paste.
 
@@ -105,6 +114,8 @@ claude
 Разрешите MCP-сервер `hirelog`, когда Claude Code спросит, и напишите `/setup`. Агент попросит резюме
 (положите PDF в папку `cv/`), задаст вопросы минут на 10 и создаст `profile.md`. Говорить с ним можно по-русски,
 резюме и ответы в анкетах он пишет на языке вакансии.
+
+Работает и в **Cursor** (команды и Hirelog уже настроены — откройте папку и напишите `/setup`) и в **Codex** (читает `AGENTS.md`).
 
 Дальше каждый день — `/daily`. Найти вакансии — `/find`. Откликнуться на одну — `/apply <ссылка>`.
 Подготовиться к звонку — `/prep`. Раз в неделю — `/strategist`: карьерный стратег смотрит воронку, находит узкое
